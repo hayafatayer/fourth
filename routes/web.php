@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('tasks', function () {
+
+    $tasks = DB::table('tasks')->get();
+
+      return view('tasks', compact('tasks'));
+
+
+});
+Route::get('tasks/show/{id}', function($id){
+
+    $task = DB::table('tasks')->where('id',$id)->get();
+
+    return view('show', compact ('task'));
+});
